@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import TaskList from './components/TaskList';
+import TaskInput from './components/TaskInput';
 
 function App() {
   const [tasks, setTasks] = useState([]);
@@ -7,19 +8,8 @@ function App() {
   const [categoryInput, setCategoryInput] = useState('');
   const [currentTask, setCurrentTask] = useState(null);
 
-
-  function handleTaskInputChange(event) {
-    setTaskInput(event.target.value);
-  }
-  
-  function handleCategoryInputChange(event) {
-    setCategoryInput(event.target.value);
-  }
-  
-  function handleKeyPress(event) {
-    if (event.key === 'Enter') {
-      addTask();
-    }
+  function handleTaskSubmit(task, category) {
+    addTask(task, category);
   }
   
   function addTask() {
@@ -47,22 +37,7 @@ function App() {
       <div className="container mx-auto py-10 px-10">
         <h1 className="text-4xl font-bold mb-6">Task Logger</h1>
         <div className="flex space-x-4 mb-6">
-          <input
-            type="text"
-            placeholder="Enter task"
-            value={taskInput}
-            onChange={handleTaskInputChange}
-            onKeyPress={handleKeyPress}
-            className="bg-gray-700 text-white placeholder-gray-400 w-full p-2 border border-gray-300 rounded"
-          />
-          <input
-            type="text"
-            placeholder="Enter task category"
-            value={categoryInput}
-            onChange={handleCategoryInputChange}
-            onKeyPress={handleKeyPress}
-            className="bg-gray-700 text-white placeholder-gray-400 w-full p-2 border border-gray-300 rounded"
-          />
+          <TaskInput onTaskSubmit={handleTaskSubmit} />
         </div>
         <TaskList tasks={tasks} currentTask={currentTask} />
       </div>
