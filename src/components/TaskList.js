@@ -1,4 +1,5 @@
 import React from 'react';
+import TaskItem from './TaskItem';
 
 function groupByDate(tasks) {
   return tasks.reduce((groupedTasks, task) => {
@@ -26,20 +27,7 @@ function TaskList({ tasks, currentTask }) {
                 .slice() // Create a shallow copy of the tasks array
                 .sort((a, b) => new Date(b.startTime) - new Date(a.startTime)) // Sort tasks in descending order
                 .map((task) => (
-                  <li
-                    key={task.id}
-                    className={`${currentTask === task ? 'bg-green-900' : 'bg-gray-800'} p-4 rounded`}
-                  >
-                    {currentTask === task && <span className="mr-2 text-white">[Current Task]</span>}
-                    <strong>Task:</strong> {task.task} | <strong>Category:</strong> {task.category} |{' '}
-                    <strong>Start Time:</strong> {new Date(task.startTime).toLocaleTimeString()}
-                    {task.endTime && (
-                      <>
-                        {' '}
-                        | <strong>End Time:</strong> {new Date(task.endTime).toLocaleTimeString()}
-                      </>
-                    )}
-                  </li>
+                  <TaskItem key={task.id} task={task} currentTask={currentTask} />
                 ))}
             </ul>
           </div>
