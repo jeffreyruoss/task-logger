@@ -12,7 +12,7 @@ function groupByDate(tasks) {
   }, {});
 }  
 
-function TaskList({ tasks, currentTask }) {
+function TaskList({ tasks, currentTask, setCurrentTask }) {
   const groupedTasks = groupByDate(tasks);
 
   return (
@@ -27,7 +27,7 @@ function TaskList({ tasks, currentTask }) {
                 .slice() // Create a shallow copy of the tasks array
                 .sort((a, b) => new Date(b.startTime) - new Date(a.startTime)) // Sort tasks in descending order
                 .map((task) => (
-                  <TaskItem key={task.id} task={task} currentTask={currentTask} />
+                  <TaskItem key={task.id} task={task} currentTask={currentTask} onStopTask={setCurrentTask} />
                 ))}
             </ul>
           </div>

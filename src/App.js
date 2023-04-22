@@ -38,12 +38,10 @@ function App() {
         <div className="flex space-x-4 mb-6">
           <TaskInput onTaskSubmit={handleTaskSubmit} />
         </div>
-        <TaskList tasks={tasks} currentTask={currentTask} />
+        <TaskList tasks={tasks} currentTask={currentTask} setCurrentTask={setCurrentTask} />
       </div>
     </div>
   );
-  
-  
 }
 
 export default App;
