@@ -8,6 +8,8 @@ Task Logger is a simple React-based application that helps you track and log you
 - View task start and end times
 - Tasks are grouped by date
 - Current task is highlighted
+- Stop the current task with a "Stop" button
+
 
 ## Installation
 
