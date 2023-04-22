@@ -12,11 +12,11 @@ function App() {
     addTask(task, category);
   }
   
-  function addTask() {
+  function addTask(task, category) {
     const newTask = {
       id: new Date().getTime(),
-      task: taskInput,
-      category: categoryInput,
+      task: task,
+      category: category,
       startTime: new Date().toLocaleString(),
       endTime: null,
     };
