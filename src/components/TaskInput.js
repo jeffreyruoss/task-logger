@@ -12,7 +12,7 @@ function TaskInput({ onTaskSubmit }) {
     setCategoryInput(e.target.value);
   }
 
-  function handleKeyPress(e) {
+  function handleKeyUp(e) {
     if (e.key === 'Enter') {
       onTaskSubmit(taskInput, categoryInput);
       setTaskInput('');
@@ -27,7 +27,7 @@ function TaskInput({ onTaskSubmit }) {
         placeholder="Enter task"
         value={taskInput}
         onChange={handleTaskInputChange}
-        onKeyPress={handleKeyPress}
+        onKeyUp={handleKeyUp}
         className="bg-gray-800 text-white placeholder-gray-400 w-full p-2 border border-gray-300 rounded"
       />
       <input
@@ -35,7 +35,7 @@ function TaskInput({ onTaskSubmit }) {
         placeholder="Enter task category"
         value={categoryInput}
         onChange={handleCategoryInputChange}
-        onKeyPress={handleKeyPress}
+        onKeyUp={handleKeyUp}
         className="bg-gray-800 text-white placeholder-gray-400 w-full p-2 border border-gray-300 rounded"
       />
     </>
