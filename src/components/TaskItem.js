@@ -14,22 +14,30 @@ function TaskItem({ task, currentTask, onStopTask }) {
           <span className="mr-2 text-white">[Current Task]</span>
           <button
             onClick={handleStopTask}
-            className="bg-red-500 text-white px-2 py-1 rounded"
+            className="bg-red-500 text-white px-2 py-1 rounded ml-2"
           >
             Stop
           </button>
         </>
       )}
-      <strong>Task:</strong> {task.task} | <strong>Category:</strong>{" "}
-      {task.category} | <strong>Start Time:</strong>{" "}
-      {new Date(task.startTime).toLocaleTimeString()}
-      {task.endTime && (
-        <>
-          {" "}
-          | <strong>End Time:</strong>{" "}
-          {new Date(task.endTime).toLocaleTimeString()}
-        </>
-      )}
+      <div className="flex flex-wrap">
+        <span className="font-semibold mr-1">Task:</span>
+        <span className="mr-4">{task.task}</span>
+        <span className="font-semibold mr-1">Category:</span>
+        <span className="mr-4">{task.category}</span>
+        <span className="font-semibold mr-1">Start Time:</span>
+        <span className="mr-4">
+          {new Date(task.startTime).toLocaleTimeString()}
+        </span>
+        {task.endTime && (
+          <>
+            <span className="font-semibold mr-1">End Time:</span>
+            <span>
+              {new Date(task.endTime).toLocaleTimeString()}
+            </span>
+          </>
+        )}
+      </div>
     </li>
   );
 }
